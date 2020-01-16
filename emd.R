@@ -21,36 +21,18 @@
   
   try2 <- emd(yt, tt, tol=sd(yt), max.sift=40, stoprule="type1", boundary="evenodd",sm="locfit", smlevels=1, spar=0.1, alpha=NULL,plot.imf=TRUE)
   
-  
+
+##SEMD
   try3 <- semd(yt, tt, cv.kfold=1000, cv.tol=0.1^1, cv.maxiter=25,emd.tol=sd(yt)*0.1^2, max.sift=20, stoprule="type1", boundary="symmetric", smlevels=1, max.imf=10)
   
+
   
-  
-  
-  
-  
-  
-  
-  
-  #PLOT EMD: 10 graphics + 1 residue in 4 plots
+  #PLOT EMD: IMFs + residue in plots
   par(mfrow=c(5, 1), mar=c(2,1,2,1))
   rangeimf <- range(try2$imf)
   for(i in 1:5) plot(tt, try2$imf[,i], type="l", xlab="", ylab="", ylim=rangeimf, main= paste(i, "-th IMF", sep="")); abline(h=0)
   
-  par(mfrow=c(3, 1), mar=c(2,1,2,1))
-  rangeimf <- range(try2$imf)
-  for(i in 4:6) plot(tt, try2$imf[,i], type="l", xlab="", ylab="", ylim=rangeimf, main= paste(i, "-th IMF", sep="")); abline(h=0)
-  
-  par(mfrow=c(3, 1), mar=c(2,1,2,1))
-  rangeimf <- range(try2$imf)
-  for(i in 7:9) plot(tt, try2$imf[,i], type="l", xlab="", ylab="", ylim=rangeimf, main= paste(i, "-th IMF", sep="")); abline(h=0)
-  
-  par(mfrow=c(3, 1), mar=c(2,1,2,1))
-  rangeimf <- range(try2$imf)
-  for(i in 10:10) plot(tt, try2$imf[,i], type="l", xlab="", ylab="", ylim=rangeimf, main= paste(i, "-th IMF", sep="")); abline(h=0)
-  plot(tt, try2$residue, xlab="", ylab="", main="residue", type="l")
-  
-  
+ 
   #clean plots
   #dev.off(dev.list()["RStudioGD"])
   
