@@ -3,7 +3,7 @@ x<-c(1:29203)
 y<-my_data[["average_daily_flow"]]
 
 
-#grafico normal
+#grafico
 heading = paste("Caudal promedio diario 1937-2017")
 plot(x, y, type="n", main=heading,xlab="días", ylab="m3/s" )
 lines(x, y, type="l")
